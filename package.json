@@ -1,0 +1,24 @@
+{
+  "name": "wa-baileys",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "baileys": "7.0.0-rc.9",
+    "baileys-redis-auth": "^2.0.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "ioredis": "^5.9.2",
+    "pino": "^10.3.0",
+    "prisma": "^6.19.2",
+    "qrcode": "^1.5.4"
+  }
+}
