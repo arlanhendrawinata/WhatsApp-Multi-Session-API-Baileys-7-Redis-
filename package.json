@@ -5,7 +5,7 @@
   "main": "server-fixed.js",
   "type": "module",
   "scripts": {
-    "start": "pm2 start ecosystem.config.js",
+    "start": "pm2 start ecosystem.config.cjs",
     "stop": "pm2 stop baileys-wa-server",
     "restart": "pm2 restart baileys-wa-server",
     "reload": "pm2 reload baileys-wa-server",
