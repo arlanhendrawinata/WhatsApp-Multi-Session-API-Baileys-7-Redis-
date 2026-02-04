@@ -9,6 +9,13 @@ import { Server } from 'socket.io'
 import QRCode from 'qrcode'
 import cors from 'cors'
 
+const isProduction = process.env.NODE_ENV === 'production'
+
+// Parse origin dari ENV
+const allowedOrigins = isProduction
+  ? (process.env.CORS_ORIGIN || '').split(',').map(o => o.trim())
+  : '*'
+
 /* =====================================================
    CONFIG
 ===================================================== */
@@ -31,13 +38,41 @@ mainRedis.on('error', e => console.error('Redis Error:', e.message))
 ===================================================== */
 
 const app = express()
-app.use(cors({ origin: '*' }))
+
+// ==================
+// Express CORS
+// ==================
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!isProduction) {
+      return callback(null, true) // dev: allow all
+    }
+
+    // allow non-browser requests (postman, curl)
+    if (!origin) return callback(null, true)
+
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true)
+    }
+
+    return callback(new Error('Not allowed by CORS'))
+  },
+  credentials: true
+}))
+
 app.use(express.json())
 
 const httpServer = createServer(app)
 
+// ==================
+// Socket.IO CORS
+// ==================
 const io = new Server(httpServer, {
-    cors: { origin: '*', methods: ['GET', 'POST'] }
+  cors: {
+    origin: isProduction ? allowedOrigins : '*',
+    methods: ['GET', 'POST'],
+    credentials: true
+  }
 })
 
 /* =====================================================
