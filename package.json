@@ -1,24 +1,41 @@
 {
-  "name": "wa-baileys",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node index.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "name": "baileys-wa-server",
+  "version": "2.0.0",
+  "description": "WhatsApp Multi-Session Server with Baileys",
+  "main": "server-fixed.js",
   "type": "module",
+  "scripts": {
+    "start": "pm2 start ecosystem.config.js",
+    "stop": "pm2 stop baileys-wa-server",
+    "restart": "pm2 restart baileys-wa-server",
+    "reload": "pm2 reload baileys-wa-server",
+    "delete": "pm2 delete baileys-wa-server",
+    "logs": "pm2 logs baileys-wa-server",
+    "monit": "pm2 monit",
+    "status": "pm2 status",
+    "dev": "NODE_ENV=development node server.js",
+    "pm2:startup": "pm2 startup",
+    "pm2:save": "pm2 save",
+    "pm2:resurrect": "pm2 resurrect",
+    "pm2:flush": "pm2 flush baileys-wa-server"
+  },
+  "keywords": [
+    "whatsapp",
+    "baileys",
+    "multi-session",
+    "nodejs"
+  ],
+  "author": "Arlan Hendrawinata",
+  "license": "MIT",
   "dependencies": {
     "baileys": "7.0.0-rc.9",
     "baileys-redis-auth": "^2.0.0",
+    "cors": "^2.8.6",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "ioredis": "^5.9.2",
     "pino": "^10.3.0",
-    "prisma": "^6.19.2",
-    "qrcode": "^1.5.4"
+    "qrcode": "^1.5.4",
+    "socket.io": "^4.8.3"
   }
 }
