@@ -39,10 +39,10 @@ module.exports = {
       // ==================
       // Environment
       // ==================
-      env: {
-        NODE_ENV: 'production',
-        MAX_SESSIONS: '50'             // Prevent unbounded session creation
-      },
+      // env: {
+      //   NODE_ENV: 'production',
+      //   MAX_SESSIONS: '50'             // Prevent unbounded session creation
+      // },
       
       // ==================
       // Advanced Options
