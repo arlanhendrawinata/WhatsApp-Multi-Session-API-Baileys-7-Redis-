@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: 'baileys-wa-server',
-      script: './server.js',
+      script: './server2.js',
       
       // Instance Configuration
       instances: 1,
